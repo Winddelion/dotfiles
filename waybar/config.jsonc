@@ -10,6 +10,7 @@
     // Choose the order of the modules
     "modules-left": [
         "clock",
+	"tray",
     ],
     "modules-center": [
 	"hyprland/workspaces",
@@ -168,8 +169,8 @@
         "format-source-muted": "",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
