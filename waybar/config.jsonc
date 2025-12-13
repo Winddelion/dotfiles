@@ -10,9 +10,7 @@
     "margin-right": 5,
     // Choose the order of the modules
     "modules-left": [
-	"clock",
-        "custom/media",
-	"wireplumber"
+	"group/qol"
     ],
     "modules-center": [
         "mpd",
@@ -20,10 +18,7 @@
     ],
     "modules-right": [
 	"custom/keyboard",
-        "network",
-        "power-profiles-daemon",
-        "cpu",
-        "memory",
+	"group/system",
         "temperature",
         "backlight",
         "battery",
@@ -45,6 +40,14 @@
     //         "default": ""
     //     }
     // },
+    "group/qol": {
+	"modules": ["clock", "wireplumber"],
+	"orientation": "horizontal"
+	},
+    "group/system": {
+	"modules": ["network", "cpu", "memory"],
+	"orientation": "horizontal"
+	},
     "keyboard-state": {
         "numlock": true,
         "capslock": true,
@@ -203,7 +206,7 @@
     },
     "wireplumber": {
 	"format": "{volume}% {icon}",
-	"format-muted": "",
+	"format-muted": "󰝟",
 	"format-icons": {
             "default": ["", "", ""]
 		}

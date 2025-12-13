@@ -121,10 +121,19 @@ button:hover {
     margin-right: 0;
 }
 
-#clock {
-    background-color: #1e1e2e;
-    color: #a6e3a1;
+#qol {
     border-radius: 5px;
+    background-color: #1e1e2e;
+}
+
+#system {
+    border-radius: 5px;
+    background-color: #1e1e2e;
+}
+
+#clock {
+    background-color: transparent;
+    color: #a6e3a1;
     padding: 0px 10px;
 }
 
@@ -181,15 +190,13 @@ label:focus {
 }
 
 #cpu {
-    background-color: #1e1e2e;
+    background-color: transparent;
     color: #74c7ec;
-    border-radius: 5px;
 }
 
 #memory {
-    background-color: #1e1e2e;
+    background-color: transparent;
     color: #b4befe;
-    border-radius: 5px;
 }
 
 #disk {
@@ -203,9 +210,8 @@ label:focus {
 }
 
 #network {
-    background-color: #1e1e2e;
+    background-color: transparent;
     color: #f9e2af;
-    border-radius: 5px;
 }
 
 #network.disconnected {
@@ -224,14 +230,15 @@ label:focus {
 }
 
 #wireplumber {
-    background-color: #1e1e2e;
+    background-color: transparent;
     color: #cba6f7;
-    border-radius: 5px;
 }
 
 #wireplumber.muted {
     color: #1e1e2e;
     background-color: #cba6f7;
+    border-radius: 0px 5px 5px 0px;
+    padding: 0px 25px;
 }
 
 #custom-media {
