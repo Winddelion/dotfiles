@@ -11,9 +11,8 @@ require("modules.autostart")
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
 
---Flatpak display
-hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:/home/guitarhero/.local/share/flatpak/exports/share:$XDG_DATA_DIRS")
-
+local home = os.getenv("HOME")
+hl.env("XDG_DATA_DIRS", "/var/lib/flatpak/exports/share:" .. home .. "/.local/share/flatpak/exports/share:/usr/local/share:/usr/share")
 -----------------------
 ----- PERMISSIONS -----
 -----------------------
@@ -45,7 +44,7 @@ hl.config({
         border_size = 2,
 
         col = {
-            active_border   = { colors = {"rgba(33ccffee)", "rgba(00ff99ee)"}, angle = 45 },
+            active_border   = { colors = {"rgba(c70104ee)", "rgba(ff2a1fee)"}, angle = 45 },
             inactive_border = "rgba(595959aa)",
         },
 
@@ -157,12 +156,12 @@ hl.config({
 ----  MISC  ----
 ----------------
 
-hl.config({
-    misc = {
-        force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
-        disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
-    },
-})
+-- hl.config({
+--     misc = {
+--         force_default_wallpaper = -1,    -- Set to 0 or 1 to disable the anime mascot wallpapers
+--         disable_hyprland_logo   = false, -- If true disables the random hyprland logo / anime girl background. :(
+--     },
+-- })
 
 
 ---------------

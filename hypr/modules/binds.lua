@@ -6,8 +6,10 @@
 -- Set programs that you use
 local terminal    = "kitty"
 local fileManager = "dolphin"
-local menu = "rofi -show run"
+local menu = "~/.config/rofi/launchers/type-1/launcher.sh"
+local menuWindow = "~/.config/rofi/launchers/type-1/launcher-window.sh"
 local screenshot = "hyprshot -m region --clipboard-only"
+local telegram = "flatpak run org.telegram.desktop"
 
 
 -----------------
@@ -24,9 +26,12 @@ hl.bind(mainMod .. " + M", hl.dsp.exec_cmd("command -v hyprshutdown >/dev/null 2
 hl.bind(mainMod .. " + E", hl.dsp.exec_cmd(fileManager))
 hl.bind(mainMod .. " + V", hl.dsp.window.float({ action = "toggle" }))
 hl.bind(mainMod .. " + R", hl.dsp.exec_cmd(menu))
+hl.bind(mainMod .. " + U", hl.dsp.exec_cmd(menuWindow))
 hl.bind(mainMod .. " + P", hl.dsp.window.pseudo())
 hl.bind(mainMod .. " + J", hl.dsp.layout("togglesplit"))    -- dwindle only
 hl.bind(mainMod .. " + SHIFT + A", hl.dsp.exec_cmd(screenshot))
+hl.bind(mainMod .. " + T", hl.dsp.exec_cmd(telegram))
+hl.bind(mainMod.. " + F", hl.dsp.window.fullscreen())
 
 -- Move focus with mainMod + arrow keys
 hl.bind(mainMod .. " + left",  hl.dsp.focus({ direction = "left" }))
@@ -68,3 +73,5 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
+-- Kill and restart waybar
+hl.bind(mainMod .. " + K", hl.dsp.exec_cmd("~/.config/waybar/scripts/launch.sh"))

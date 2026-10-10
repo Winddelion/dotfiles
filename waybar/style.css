@@ -4,8 +4,36 @@
     padding: 0px 0px;
 }
 
+
+/* ── Gojira palette ── */
+/* base — From Mars to Sirius (bone, ash, deep space) */
+@define-color void           #0b0d10;   /* bg — deep space black */
+@define-color panel          #14171c;   /* bg_alt — inactive/panel */
+@define-color bone           #e8e2d6;   /* fg — bone white */
+@define-color old_bone       #9a9488;   /* fg_dim — aged bone */
+@define-color ash            #5c5a52;   /* comment — ash */
+
+/* accents — The Link (artery red) */
+@define-color artery         #C70104;   /* primary accent — the hit */
+@define-color artery_bright  #ff2a1f;   /* focused / urgent */
+
+/* accents — L'Enfant Sauvage (ember, smoke) */
+@define-color ember          #c25a1e;   /* secondary accent — hover */
+@define-color ember_bright   #e87a2a;   /* warning / active */
+@define-color smoke          #b04a1a;   /* smoke catching light */
+
+/* muted support — used sparingly, sit under the palette */
+@define-color moss           #4a5f3a;   /* green — quiet */
+@define-color cold_ocean     #3f6d7a;   /* cyan — whale */
+@define-color deep_sea       #2a4a6b;   /* blue */
+@define-color bruise         #6b3a5c;   /* purple — muted */
+@define-color bleed          #a02a4a;   /* magenta — red into purple */
+
+/* bright text */
+@define-color bone_bright    #f5f0e6;
+
 window#waybar {
-	background-color: transparent;
+	background-color: @void;
 	transition-property: background-color;
 	transition-duration: .5s;
 	margin-top: 10px;
@@ -24,18 +52,16 @@ window#waybar.solo {: 5,
 */
 
 window#waybar.termite {
-    background-color: #3F3F3F;
+    background-color: @panel;
 }
 
 window#waybar.chromium {
-    background-color: #000000;
+    background-color: @void;
     border: none;
 }
 
 button {
-    /* Use box-shadow instead of border so the text isn't offset */
     box-shadow: inset 0 -3px transparent;
-    /* Avoid rounded borders under each button name */
     border: none;
     border-radius: 0;
 }
@@ -47,41 +73,42 @@ button:hover {
 
 /* you can set a style on hover for any module like this */
 #pulseaudio:hover {
-    background-color: #a37800;
+    background-color: @ember;
 }
 
 #workspaces button {
     padding: 0 12px;
-    color: #cba6f7;
+    color: @old_bone;
 }
 
 #workspaces button:hover {
-    background-color: #b4befe;
-    color: #1e1e2e;
+    background-color: @bleed;
+    color: @bone_bright;
     border-radius: 5px;
     transition: 0.2s;
 }
 
 #workspaces button.focused {
-    background-color: #64727D;
+    background-color: @ash;
 }
 
 #workspaces button.urgent {
-    background-color: #a6e3a1;
+    background-color: @ember_bright;
+    color: @void;
     border-radius: 5px;
-    border-color: #a1a1a1;
+    border-color: @ash;
 }
 
 #workspaces button.active {
-    background-color: #cba6f7;
-    color: #1e1e2e;
+    background-color: @artery;
+    color: @bone_bright;
     transition: 0.2s;
     border-radius: 5px;
 }
 
 #mode {
-    background-color: #64727D;
-    box-shadow: inset 0 -3px #ffffff;
+    background-color: @ash;
+    box-shadow: inset 0 -3px @bone;
 }
 
 #clock,
@@ -102,7 +129,7 @@ button:hover {
 #power-profiles-daemon,
 #mpd {
     padding: 0 10px;
-    color: #ffffff;
+    color: @bone;
 }
 
 #window,
@@ -110,7 +137,7 @@ button:hover {
     margin: 0 4px;
     padding: 5px 5px;
     border-radius: 5px;
-    background-color: #1e1e2e;
+    background-color: @panel;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
@@ -125,42 +152,42 @@ button:hover {
 
 #qol {
     border-radius: 5px;
-    background-color: #1e1e2e;
+    background-color: @panel;
 }
 
 #system {
     border-radius: 5px;
-    background-color: #1e1e2e;
+    background-color: @panel;
 }
 
 #clock {
     background-color: transparent;
-    color: #a6e3a1;
+    color: @smoke;
     padding: 0px 10px;
 }
 
 #battery {
-    background-color: #1e1e2e;
-    color: #cba6f7;
+    background-color: @panel;
+    color: @ember_bright;
     border-radius: 5px;
 }
 
 #battery.charging, #battery.plugged {
-    color: #1e1e2e;
-    background-color: #f9e2af;
+    color: @void;
+    background-color: @smoke;
 }
 
 @keyframes blink {
     to {
-        background-color: #ffffff;
-        color: #000000;
+        background-color: @bone_bright;
+        color: @void;
     }
 }
 
 /* Using steps() instead of linear as a timing function to limit cpu usage */
 #battery.critical:not(.charging) {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @artery_bright;
+    color: @bone_bright;
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: steps(12);
@@ -173,106 +200,109 @@ button:hover {
 }
 
 #power-profiles-daemon.performance {
-    background-color: #f53c3c;
-    color: #ffffff;
+    background-color: @artery_bright;
+    color: @bone_bright;
 }
 
 #power-profiles-daemon.balanced {
-    background-color: #2980b9;
-    color: #ffffff;
+    background-color: @deep_sea;
+    color: @bone;
 }
 
 #power-profiles-daemon.power-saver {
-    background-color: #2ecc71;
-    color: #000000;
+    background-color: @moss;
+    color: @bone_bright;
 }
 
 label:focus {
-    background-color: #000000;
+    background-color: @void;
 }
 
 #cpu {
     background-color: transparent;
-    color: #74c7ec;
+    color: @cold_ocean;
 }
 
 #memory {
     background-color: transparent;
-    color: #b4befe;
+    color: @bruise;
 }
 
 #disk {
-    background-color: #964B00;
+    background-color: @ember;
+    color: @bone_bright;
+    border-radius: 5px;
 }
 
 #backlight {
-    background-color: #1e1e2e;
-    color: #cba6f7;
+    background-color: @panel;
+    color: @ember_bright;
     border-radius: 5px;
 }
 
 #network {
     background-color: transparent;
-    color: #f9e2af;
+    color: @smoke;
 }
 
 #network.disconnected {
-    background-color: #1e1e2e;
-    color: #f38ba8;
+    background-color: @panel;
+    color: @artery_bright;
     border-radius: 5px;
 }
 
 #pulseaudio {
-    background-color: #1e1e2e;
-    color: #cba6f7;
+    background-color: @panel;
+    color: @ember_bright;
     border-radius: 15px;
 }
 
 #pulseaudio.muted {
-    background-color: #90b1b1;
-    color: #2a5c45;
+    background-color: @ash;
+    color: @old_bone;
 }
 
 #wireplumber {
     background-color: transparent;
-    color: #cba6f7;
+    color: @ember_bright;
 }
 
 #wireplumber.muted {
-    color: #1e1e2e;
-    background-color: #cba6f7;
+    color: @void;
+    background-color: @ember;
     border-radius: 0px 5px 5px 0px;
     padding: 0px 25px;
 }
 
 #custom-media {
-    background-color: #66cc99;
-    color: #2a5c45;
+    background-color: @moss;
+    color: @bone_bright;
     min-width: 100px;
     border-radius: 15px;
 }
 
 #custom-media.custom-spotify {
-    background-color: #66cc99;
+    background-color: @moss;
 }
 
 #custom-media.custom-vlc {
-    background-color: #ffa000;
+    background-color: @ember_bright;
 }
 
 #temperature {
-    background-color: #1e1e2e;
-    color: #f38ba8;
+    background-color: @panel;
+    color: @bleed;
     border-radius: 5px;
 }
 
 #temperature.critical {
-    background-color: #eb4d4b;
+    background-color: @artery_bright;
+    color: @bone_bright;
 }
 
 #tray {
-    background-color: #1e1e2e;
-    color: #cba6f7;
+    background-color: @panel;
+    color: @bone;
     border-radius: 15px;
 }
 
@@ -282,46 +312,53 @@ label:focus {
 
 #tray > .needs-attention {
     -gtk-icon-effect: highlight;
-    background-color: #eb4d4b;
+    background-color: @artery_bright;
 }
 
 #idle_inhibitor {
-    background-color: #2d3436;
+    background-color: @ash;
+    color: @bone;
+    border-radius: 5px;
 }
 
 #idle_inhibitor.activated {
-    background-color: #ecf0f1;
-    color: #2d3436;
+    background-color: @bone;
+    color: @void;
 }
 
 #mpd {
-    background-color: #66cc99;
-    color: #2a5c45;
+    background-color: transparent;
+    color: @smoke;
+    padding: 0 10px;
 }
 
-#mpd.disconnected {
-    background-color: #f53c3c;
-}
-
-#mpd.stopped {
-    background-color: #90b1b1;
+#mpd.playing {
+    color: @ember_bright;
 }
 
 #mpd.paused {
-    background-color: #51a37a;
+    color: @old_bone;
+}
+
+#mpd.stopped {
+    color: @ash;
+}
+
+#mpd.disconnected {
+    color: @artery_bright;
 }
 
 #language {
-    background: #00b093;
-    color: #740864;
+    background: @cold_ocean;
+    color: @bone_bright;
     padding: 0 5px;
     margin: 0 5px;
     min-width: 16px;
 }
 
 #keyboard-state {
-    background: #97e1ad;
-    color: #000000;
+    background: @moss;
+    color: @bone_bright;
     padding: 0 0px;
     margin: 0 5px;
     min-width: 16px;
@@ -349,17 +386,17 @@ label:focus {
 
 #privacy-item {
     padding: 0 5px;
-    color: white;
+    color: @bone_bright;
 }
 
 #privacy-item.screenshare {
-    background-color: #cf5700;
+    background-color: @artery;
 }
 
 #privacy-item.audio-in {
-    background-color: #1ca000;
+    background-color: @moss;
 }
 
 #privacy-item.audio-out {
-    background-color: #0069d4;
+    background-color: @deep_sea;
 }
