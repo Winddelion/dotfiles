@@ -1,0 +1,25 @@
+/**
+ *
+ * Gojira palette for rofi
+ * Base — From Mars to Sirius
+ * Accent — The Link (artery red)
+ * Smoke — L'Enfant Sauvage
+ *
+ **/
+
+* {
+    /* base */
+    background:     #0b0d10FF;   /* void — deep space black */
+    background-alt: #14171cFF;   /* panel — inactive/layer */
+    foreground:     #e8e2d6FF;   /* bone — readable text */
+
+    /* states — candy-style role mapping, Gojira colors */
+    selected:       #c25a1eFF;   /* ember — selection, hover */
+    active:         #C70104FF;   /* artery — the hit, focused */
+    urgent:         #ff2a1fFF;   /* artery bright — alerts */
+
+    /* optional extras many themes reference */
+    border:         #5c5a52FF;   /* ash */
+    separator:      #14171cFF;   /* panel */
+    disabled:       #9a9488FF;   /* old bone */
+}
